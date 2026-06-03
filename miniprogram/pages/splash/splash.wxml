@@ -1,0 +1,15 @@
+<view class="splash {{fadeOut ? 'fade-out' : ''}}">
+  <view class="splash-inner {{show ? 'show' : ''}}">
+    <view class="logo-wrap">
+      <view class="logo-ring"></view>
+      <view class="logo-icon">🚗</view>
+    </view>
+    <view class="app-name">汽车百科</view>
+    <view class="app-slogan">演示版 · 零部件 · 故障 · 一站查询</view>
+    <view class="loading">
+      <view class="dot"></view>
+      <view class="dot"></view>
+      <view class="dot"></view>
+    </view>
+  </view>
+</view>

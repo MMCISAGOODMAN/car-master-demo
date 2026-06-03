@@ -1,0 +1,29 @@
+<view class="tool-page">
+  <view class="tabs">
+    <view class="tab {{tab === 'parts' ? 'active' : ''}}" bindtap="switchTab" data-tab="parts">零件收藏</view>
+    <view class="tab {{tab === 'faults' ? 'active' : ''}}" bindtap="switchTab" data-tab="faults">故障收藏</view>
+  </view>
+
+  <view wx:if="{{tab === 'parts'}}">
+    <view wx:if="{{parts.length === 0}}" class="tool-empty">暂无收藏的零件</view>
+    <view class="fav-item" wx:for="{{parts}}" wx:key="id" bindtap="goPart" data-id="{{item.id}}">
+      <image class="fav-img" src="{{item.imageUrlFull}}" mode="aspectFill" />
+      <view class="fav-info">
+        <view class="fav-title">{{item.name}}</view>
+        <view class="fav-meta">{{item.categoryName}}</view>
+      </view>
+      <view class="action-btn danger" catchtap="removePart" data-id="{{item.id}}">取消</view>
+    </view>
+  </view>
+
+  <view wx:if="{{tab === 'faults'}}">
+    <view wx:if="{{faults.length === 0}}" class="tool-empty">暂无收藏的故障</view>
+    <view class="fav-item no-img" wx:for="{{faults}}" wx:key="id" bindtap="goFault" data-id="{{item.id}}">
+      <view class="fav-info">
+        <view class="fav-title">{{item.title}}</view>
+        <view class="fav-meta">{{item.categoryName}} · {{item.dangerLevel}}</view>
+      </view>
+      <view class="action-btn danger" catchtap="removeFault" data-id="{{item.id}}">取消</view>
+    </view>
+  </view>
+</view>

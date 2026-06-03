@@ -1,0 +1,26 @@
+{
+  "pages": [
+    "pages/splash/splash",
+    "pages/index/index",
+    "pages/parts/categories/categories",
+    "pages/parts/list/list",
+    "pages/parts/detail/detail",
+    "pages/search/unified/unified",
+    "pages/faults/categories/categories",
+    "pages/faults/list/list",
+    "pages/faults/detail/detail",
+    "pages/tools/maintain/maintain",
+    "pages/tools/favorite/favorite",
+    "pages/guide/beginner/beginner",
+    "pages/about/about"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "首页",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f7f8fa",
+    "backgroundTextStyle": "dark"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

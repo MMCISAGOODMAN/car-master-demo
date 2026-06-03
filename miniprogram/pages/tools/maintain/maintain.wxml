@@ -1,0 +1,32 @@
+<view class="tool-page">
+  <view class="tool-card">
+    <view class="tool-card-title">添加保养提醒</view>
+    <input class="tool-input" placeholder="保养项目，如：更换机油" value="{{form.title}}" bindinput="onTitle" />
+    <input class="tool-input" placeholder="目标里程(km)，如：10000" type="number" value="{{form.mileage}}" bindinput="onMileage" />
+    <picker mode="date" value="{{form.date}}" bindchange="onDate">
+      <view class="tool-input picker">{{form.date || '选择提醒日期'}}</view>
+    </picker>
+    <view class="tool-btn" bindtap="addItem">添加提醒</view>
+    <view class="tool-tip" style="margin-top:16rpx">到期后在首页和本页高亮提示（需打开小程序查看）</view>
+  </view>
+
+  <view class="summary-bar" wx:if="{{list.length}}">
+    <text wx:if="{{summary.overdue}}" class="sum-tag overdue">过期 {{summary.overdue}}</text>
+    <text wx:if="{{summary.today}}" class="sum-tag today">今日 {{summary.today}}</text>
+    <text wx:if="{{summary.soon}}" class="sum-tag soon">7日内 {{summary.soon}}</text>
+  </view>
+
+  <view wx:if="{{list.length === 0}}" class="tool-empty">暂无保养提醒</view>
+
+  <view class="list-item-card {{item.status}}" wx:for="{{list}}" wx:key="id">
+    <view class="item-head">
+      <view class="list-item-title">{{item.title}}</view>
+      <view class="status-badge {{item.status}}" wx:if="{{item.status !== 'normal'}}">{{item.statusLabel}}</view>
+    </view>
+    <view class="list-item-meta">日期：{{item.date}} · 里程：{{item.mileage || '未设'}} km</view>
+    <view class="list-item-meta normal-label" wx:if="{{item.status === 'normal'}}">{{item.statusLabel}}</view>
+    <view class="list-item-actions">
+      <view class="action-btn danger" bindtap="remove" data-id="{{item.id}}">删除</view>
+    </view>
+  </view>
+</view>
