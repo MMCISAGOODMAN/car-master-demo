@@ -1,0 +1,24 @@
+{
+  "name": "car-master-backend",
+  "version": "1.0.0",
+  "description": "Car Master API - 汽车零部件科普与故障分析",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/server.js",
+    "init-db": "node scripts/init-db.js",
+    "init-db:demo": "CAR_MASTER_DATA=sample node scripts/init-db.js",
+    "export-public-demo": "bash scripts/export-public-demo.sh",
+    "generate-images": "node scripts/generate-images.js",
+    "update-image-urls": "node scripts/update-image-urls.js",
+    "render-pngs": "node scripts/render-missing-pngs.js",
+    "generate-ai-pngs": "node scripts/generate-ai-pngs.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.7.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "sharp": "^0.33.5"
+  },
+  "license": "SEE LICENSE IN ../LICENSE"
+}

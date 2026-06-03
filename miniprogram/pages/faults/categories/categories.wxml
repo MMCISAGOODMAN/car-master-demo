@@ -1,0 +1,24 @@
+<view class="container">
+  <view class="search-bar" bindtap="goSearch">
+    <text class="search-icon">🔍</text>
+    <text class="search-placeholder">搜索故障...</text>
+  </view>
+
+  <view wx:if="{{loading}}" class="loading">加载中...</view>
+
+  <view wx:elif="{{categories.length === 0}}" class="empty-tip">暂无分类数据</view>
+
+  <view wx:else class="category-grid">
+    <view
+      class="category-item"
+      wx:for="{{categories}}"
+      wx:key="id"
+      bindtap="goList"
+      data-id="{{item.id}}"
+      data-name="{{item.name}}"
+    >
+      <view class="category-icon">{{icons[item.icon] || '🔧'}}</view>
+      <view class="category-name">{{item.name}}</view>
+    </view>
+  </view>
+</view>

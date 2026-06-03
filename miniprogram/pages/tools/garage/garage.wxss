@@ -1,0 +1,5 @@
+@import '../tool.wxss';
+
+.btn-row { display: flex; gap: 16rpx; }
+.half { flex: 1; margin-bottom: 0 !important; }
+.picker { color: #333; }

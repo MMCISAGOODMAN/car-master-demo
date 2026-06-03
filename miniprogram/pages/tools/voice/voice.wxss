@@ -1,0 +1,7 @@
+@import '../tool.wxss';
+.chip-grid { display: flex; flex-wrap: wrap; gap: 16rpx; padding: 0 0 24rpx; }
+.chip {
+  font-size: 26rpx; color: #0f3460; background: #eef4ff;
+  padding: 16rpx 28rpx; border-radius: 100rpx; border: 1rpx solid rgba(15,52,96,0.1);
+}
+.chip.part { color: #e94560; background: #fff0f3; border-color: rgba(233,69,96,0.1); }

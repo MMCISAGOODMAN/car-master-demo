@@ -1,0 +1,15 @@
+<view class="tool-page">
+  <view class="tool-card">
+    <view class="tool-card-title">常见故障快查</view>
+    <view class="tool-tip">选择症状关键词，快速搜索故障案例</view>
+  </view>
+  <view class="chip-grid">
+    <view class="chip" wx:for="{{keywords}}" wx:key="*this" bindtap="search" data-kw="{{item}}">{{item}}</view>
+  </view>
+  <view class="tool-card">
+    <view class="tool-card-title">零件快查</view>
+    <view class="chip-grid">
+      <view class="chip part" wx:for="{{partKeywords}}" wx:key="*this" bindtap="searchPart" data-kw="{{item}}">{{item}}</view>
+    </view>
+  </view>
+</view>

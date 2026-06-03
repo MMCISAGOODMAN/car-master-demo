@@ -1,0 +1,27 @@
+<view class="tool-page">
+  <view class="tool-card">
+    <view class="tool-card-title">选择症状（可多选）</view>
+    <view class="chip-grid">
+      <view
+        class="chip {{item.selected ? 'active' : ''}}"
+        wx:for="{{tags}}"
+        wx:key="id"
+        bindtap="toggleTag"
+        data-id="{{item.id}}"
+      >{{item.label}}</view>
+    </view>
+    <view class="tool-btn" bindtap="diagnose">开始诊断</view>
+  </view>
+
+  <view wx:if="{{loading}}" class="tool-empty">分析中...</view>
+  <view wx:elif="{{searched && results.length === 0}}" class="tool-empty">未匹配到相关故障，建议到维修店进一步检查</view>
+
+  <view class="tool-card" wx:if="{{results.length}}">
+    <view class="tool-card-title">可能故障 ({{results.length}})</view>
+    <view class="match-item" wx:for="{{results}}" wx:key="id" bindtap="goFault" data-id="{{item.id}}">
+      <view class="match-title">{{item.title}}</view>
+      <view class="match-meta">{{item.categoryName}} · 危险等级 {{item.dangerLevel}}</view>
+      <view class="match-symptoms">{{item.symptoms}}</view>
+    </view>
+  </view>
+</view>

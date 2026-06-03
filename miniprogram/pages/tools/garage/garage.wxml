@@ -1,0 +1,24 @@
+<view class="tool-page">
+  <view class="tool-card">
+    <view class="tool-card-title">我的爱车</view>
+    <input class="tool-input" placeholder="品牌型号，如：大众 朗逸" value="{{form.model}}" bindinput="onField" data-field="model" />
+    <input class="tool-input" placeholder="车牌号" value="{{form.plate}}" bindinput="onField" data-field="plate" />
+    <input class="tool-input" placeholder="当前里程(km)" type="number" value="{{form.mileage}}" bindinput="onField" data-field="mileage" />
+    <input class="tool-input" placeholder="VIN（选填）" maxlength="17" value="{{form.vin}}" bindinput="onField" data-field="vin" />
+    <picker range="{{oilTypes}}" value="{{oilIndex}}" bindchange="onOil">
+      <view class="tool-input picker">{{oilTypes[oilIndex]}}</view>
+    </picker>
+    <view class="btn-row">
+      <view class="tool-btn half" bindtap="save">保存</view>
+      <view class="tool-btn secondary half" bindtap="clear">清除</view>
+    </view>
+  </view>
+
+  <view class="tool-card" wx:if="{{car}}">
+    <view class="tool-card-title">车辆摘要</view>
+    <view class="tool-row"><text class="tool-label">车型</text><text class="tool-value">{{car.model || '未填写'}}</text></view>
+    <view class="tool-row"><text class="tool-label">里程</text><text class="tool-value">{{car.mileage || '未填写'}} km</text></view>
+    <view class="tool-row"><text class="tool-label">机油类型</text><text class="tool-value">{{car.oilType}}</text></view>
+    <view class="tool-tip" style="margin-top:12rpx">可在保养提醒、油耗记录中参考此信息</view>
+  </view>
+</view>

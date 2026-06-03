@@ -1,0 +1,21 @@
+<view class="tool-page">
+  <view class="tool-card">
+    <view class="tool-card-title">记录加油</view>
+    <input class="tool-input" placeholder="当前总里程(km)" type="digit" value="{{form.mileage}}" bindinput="onMileage" />
+    <input class="tool-input" placeholder="加油量(升)" type="digit" value="{{form.liters}}" bindinput="onLiters" />
+    <input class="tool-input" placeholder="金额(元)" type="digit" value="{{form.cost}}" bindinput="onCost" />
+    <view class="tool-btn" bindtap="addRecord">保存记录</view>
+  </view>
+  <view class="tool-card" wx:if="{{avgConsumption}}">
+    <view class="tool-card-title">最近油耗</view>
+    <view class="tool-row"><text class="tool-label">百公里油耗</text><text class="tool-value accent">{{avgConsumption}} L/100km</text></view>
+  </view>
+  <view wx:if="{{list.length === 0}}" class="tool-empty">暂无记录，至少添加2条可计算油耗</view>
+  <view class="list-item-card" wx:for="{{list}}" wx:key="id">
+    <view class="list-item-title">{{item.liters}}L · ¥{{item.cost}}</view>
+    <view class="list-item-meta">里程 {{item.mileage}} km · {{item.dateStr}}</view>
+    <view class="list-item-actions">
+      <view class="action-btn danger" bindtap="remove" data-id="{{item.id}}">删除</view>
+    </view>
+  </view>
+</view>

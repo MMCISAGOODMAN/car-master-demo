@@ -1,0 +1,23 @@
+@import '../guide.wxss';
+
+.light-card {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 28rpx;
+  margin-bottom: 24rpx;
+  border: 1rpx solid #eef0f3;
+}
+.light-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12rpx;
+}
+.light-name { font-size: 30rpx; font-weight: 600; color: #1a1a2e; }
+.light-badge {
+  font-size: 22rpx;
+  padding: 4rpx 16rpx;
+  border-radius: 8rpx;
+}
+.light-badge.red { background: #fef2f2; color: #dc2626; }
+.light-badge.yellow { background: #fefce8; color: #ca8a04; }

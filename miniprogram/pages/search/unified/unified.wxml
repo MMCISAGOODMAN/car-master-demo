@@ -1,0 +1,42 @@
+<view class="page">
+  <view class="search-box">
+    <input class="search-input" placeholder="搜索零件、故障..." value="{{keyword}}" bindinput="onInput" confirm-type="search" bindconfirm="doSearch" focus="{{autoFocus}}" />
+    <view class="search-btn" bindtap="doSearch">搜索</view>
+  </view>
+
+  <view class="tabs">
+    <view class="tab {{tab === 'all' ? 'active' : ''}}" bindtap="switchTab" data-tab="all">全部</view>
+    <view class="tab {{tab === 'parts' ? 'active' : ''}}" bindtap="switchTab" data-tab="parts">零件</view>
+    <view class="tab {{tab === 'faults' ? 'active' : ''}}" bindtap="switchTab" data-tab="faults">故障</view>
+  </view>
+
+  <view wx:if="{{loading}}" class="loading">搜索中...</view>
+  <view wx:elif="{{!searched}}" class="hot-wrap">
+    <view class="hot-title">热门搜索</view>
+    <view class="hot-tags">
+      <view class="hot-tag" wx:for="{{hotKeywords}}" wx:key="*this" bindtap="searchHot" data-word="{{item}}">{{item}}</view>
+    </view>
+  </view>
+  <view wx:elif="{{showEmpty}}" class="empty-tip">未找到相关内容</view>
+
+  <block wx:if="{{tab === 'all' || tab === 'parts'}}">
+    <view class="section-label" wx:if="{{parts.length && searched}}">零件 ({{parts.length}})</view>
+    <view class="result-item" wx:for="{{parts}}" wx:key="id" bindtap="goPart" data-id="{{item.id}}">
+      <image class="result-img" src="{{item.imageUrlFull}}" mode="aspectFill" />
+      <view class="result-info">
+        <view class="result-title">{{item.name}}</view>
+        <view class="result-meta">{{item.categoryName}}</view>
+      </view>
+    </view>
+  </block>
+
+  <block wx:if="{{tab === 'all' || tab === 'faults'}}">
+    <view class="section-label" wx:if="{{faults.length && searched}}">故障 ({{faults.length}})</view>
+    <view class="result-item no-img" wx:for="{{faults}}" wx:key="id" bindtap="goFault" data-id="{{item.id}}">
+      <view class="result-info">
+        <view class="result-title">{{item.title}}</view>
+        <view class="result-meta">{{item.categoryName}} · {{item.dangerLevel}}</view>
+      </view>
+    </view>
+  </block>
+</view>

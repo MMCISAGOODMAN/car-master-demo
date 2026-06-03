@@ -1,0 +1,29 @@
+@import '../../app.wxss';
+
+.guide-page {
+  min-height: 100vh;
+  padding: 24rpx 32rpx 48rpx;
+  box-sizing: border-box;
+  background: #f7f8fa;
+}
+
+.guide-card {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 28rpx;
+  margin-bottom: 24rpx;
+  border: 1rpx solid #eef0f3;
+}
+
+.guide-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 12rpx;
+}
+
+.guide-content {
+  font-size: 26rpx;
+  color: #555;
+  line-height: 1.8;
+}

@@ -1,0 +1,57 @@
+@import '../tool.wxss';
+
+.picker { color: #333; }
+
+.summary-bar {
+  display: flex;
+  gap: 12rpx;
+  margin-bottom: 20rpx;
+  flex-wrap: wrap;
+}
+
+.sum-tag {
+  font-size: 22rpx;
+  padding: 6rpx 16rpx;
+  border-radius: 999rpx;
+}
+
+.sum-tag.overdue { background: #fef2f2; color: #dc2626; }
+.sum-tag.today { background: #fff7ed; color: #ea580c; }
+.sum-tag.soon { background: #fefce8; color: #ca8a04; }
+
+.list-item-card.overdue {
+  border-color: rgba(220, 38, 38, 0.35);
+  background: #fffbfb;
+}
+
+.list-item-card.today {
+  border-color: rgba(234, 88, 12, 0.35);
+  background: #fffbf7;
+}
+
+.list-item-card.soon {
+  border-color: rgba(202, 138, 4, 0.3);
+  background: #fffef5;
+}
+
+.item-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12rpx;
+  margin-bottom: 8rpx;
+}
+
+.status-badge {
+  flex-shrink: 0;
+  font-size: 20rpx;
+  padding: 4rpx 12rpx;
+  border-radius: 8rpx;
+  font-weight: 600;
+}
+
+.status-badge.overdue { background: #dc2626; color: #fff; }
+.status-badge.today { background: #ea580c; color: #fff; }
+.status-badge.soon { background: #ca8a04; color: #fff; }
+
+.normal-label { color: #aaa; }

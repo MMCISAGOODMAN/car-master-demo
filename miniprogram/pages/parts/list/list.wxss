@@ -1,0 +1,42 @@
+.part-item {
+  display: flex;
+  padding: 0;
+  overflow: hidden;
+}
+
+.part-image {
+  width: 200rpx;
+  height: 200rpx;
+  flex-shrink: 0;
+  background: #f0f0f0;
+}
+
+.part-info {
+  flex: 1;
+  padding: 24rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.part-name {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 8rpx;
+}
+
+.part-desc {
+  font-size: 24rpx;
+  color: #666;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 8rpx;
+}
+
+.part-location {
+  font-size: 22rpx;
+  color: #999;
+}

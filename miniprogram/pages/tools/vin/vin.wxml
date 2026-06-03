@@ -1,0 +1,19 @@
+<view class="tool-page">
+  <view class="tool-card">
+    <view class="tool-card-title">输入车架号 VIN</view>
+    <input class="tool-input" placeholder="17位车架号" maxlength="17" value="{{vin}}" bindinput="onInput" />
+    <view class="tool-btn" bindtap="decode">解码查询</view>
+    <view class="tool-tip" style="margin-top:16rpx">VIN 位于挡风玻璃左下或行驶证上</view>
+  </view>
+  <view class="tool-card" wx:if="{{result && !result.error}}">
+    <view class="tool-card-title">解码结果</view>
+    <view class="tool-row"><text class="tool-label">VIN</text><text class="tool-value">{{result.vin}}</text></view>
+    <view class="tool-row"><text class="tool-label">生产地区</text><text class="tool-value">{{result.region}}</text></view>
+    <view class="tool-row"><text class="tool-label">厂商参考</text><text class="tool-value">{{result.manufacturer}}</text></view>
+    <view class="tool-row"><text class="tool-label">WMI</text><text class="tool-value">{{result.wmi}}</text></view>
+    <view class="tool-row"><text class="tool-label">年份参考</text><text class="tool-value">{{result.modelYear}}</text></view>
+  </view>
+  <view class="tool-card" wx:if="{{result && result.error}}">
+    <view class="tool-tip" style="color:#e94560">{{result.error}}</view>
+  </view>
+</view>

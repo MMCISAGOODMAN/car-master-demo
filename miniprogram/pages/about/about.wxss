@@ -1,0 +1,84 @@
+@import '../../app.wxss';
+
+.about-page {
+  min-height: 100vh;
+  padding: 32rpx 32rpx 48rpx;
+  background: #f7f8fa;
+  box-sizing: border-box;
+}
+
+.hero {
+  text-align: center;
+  padding: 48rpx 0 40rpx;
+}
+
+.logo {
+  font-size: 80rpx;
+  line-height: 1;
+}
+
+.title {
+  margin-top: 16rpx;
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.subtitle {
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.card {
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 28rpx;
+  margin-bottom: 24rpx;
+  border: 1px solid #eef0f3;
+}
+
+.card-title {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 16rpx;
+}
+
+.para {
+  font-size: 26rpx;
+  color: #555;
+  line-height: 1.75;
+  margin-bottom: 12rpx;
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  border-top: 1px solid #f0f0f0;
+}
+
+.label {
+  width: 80rpx;
+  font-size: 26rpx;
+  color: #999;
+}
+
+.value {
+  flex: 1;
+  font-size: 26rpx;
+  color: #0f3460;
+}
+
+.copy {
+  font-size: 24rpx;
+  color: #e94560;
+}
+
+.footer {
+  text-align: center;
+  font-size: 22rpx;
+  color: #bbb;
+  padding-top: 16rpx;
+}

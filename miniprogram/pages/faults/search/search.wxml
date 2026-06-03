@@ -1,0 +1,35 @@
+<view class="container">
+  <view class="search-input-wrap">
+    <input
+      class="search-input"
+      placeholder="输入故障关键词搜索"
+      value="{{keyword}}"
+      bindinput="onInput"
+      bindconfirm="doSearch"
+      focus
+    />
+    <view class="search-btn" bindtap="doSearch">搜索</view>
+  </view>
+
+  <view wx:if="{{searched && loading}}" class="loading">搜索中...</view>
+
+  <view wx:elif="{{searched && results.length === 0}}" class="empty-tip">未找到相关故障</view>
+
+  <view wx:elif="{{results.length > 0}}">
+    <view class="result-count">找到 {{results.length}} 个结果</view>
+    <view
+      class="fault-item card"
+      wx:for="{{results}}"
+      wx:key="id"
+      bindtap="goDetail"
+      data-id="{{item.id}}"
+    >
+      <view class="fault-header">
+        <view class="fault-title">{{item.title}}</view>
+        <view class="danger-badge {{item.dangerClass}}">{{item.dangerLevel}}</view>
+      </view>
+      <view class="fault-category">{{item.categoryName}}</view>
+      <view class="fault-symptoms">{{item.symptoms}}</view>
+    </view>
+  </view>
+</view>

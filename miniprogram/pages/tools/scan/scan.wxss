@@ -1,0 +1,11 @@
+@import '../tool.wxss';
+.scan-box {
+  margin-top: 32rpx;
+  padding: 80rpx;
+  border: 2rpx dashed #ddd;
+  border-radius: 20rpx;
+  text-align: center;
+  background: #fafafa;
+}
+.scan-icon { font-size: 80rpx; display: block; margin-bottom: 16rpx; }
+.scan-text { font-size: 28rpx; color: #666; }

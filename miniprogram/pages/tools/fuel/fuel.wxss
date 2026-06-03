@@ -1,0 +1,2 @@
+@import '../tool.wxss';
+.accent { color: #e94560 !important; font-size: 32rpx !important; }

@@ -1,0 +1,15 @@
+<view class="tool-page">
+  <view class="tool-card">
+    <view class="tool-card-title">扫描零件条码/二维码</view>
+    <view class="tool-tip">扫描包装或说明书上的条码，自动搜索对应零部件</view>
+    <view class="scan-box" bindtap="doScan">
+      <text class="scan-icon">📷</text>
+      <text class="scan-text">点击开始扫描</text>
+    </view>
+  </view>
+  <view class="tool-card">
+    <view class="tool-card-title">手动输入编号</view>
+    <input class="tool-input" placeholder="输入零件编号或名称" value="{{code}}" bindinput="onInput" />
+    <view class="tool-btn" bindtap="searchByCode">搜索零部件</view>
+  </view>
+</view>

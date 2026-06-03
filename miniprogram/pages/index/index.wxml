@@ -1,0 +1,176 @@
+<view class="page">
+  <!-- 保养到期提醒 -->
+  <view class="maintain-alert {{maintainAlert.hasOverdue ? 'overdue' : 'today'}}" wx:if="{{maintainAlert}}" bindtap="goMaintain">
+    <view class="alert-icon">{{maintainAlert.hasOverdue ? '⚠️' : '📅'}}</view>
+    <view class="alert-body">
+      <view class="alert-title">{{maintainAlert.hasOverdue ? '保养已过期' : '保养今日到期'}}</view>
+      <view class="alert-desc">{{maintainAlert.message}}</view>
+    </view>
+    <view class="alert-go">查看 →</view>
+  </view>
+
+  <!-- 快捷搜索 -->
+  <view class="search-bar" bindtap="goUnifiedSearch">
+    <text class="search-icon">🔍</text>
+    <text class="search-placeholder">搜索零部件、故障关键词...</text>
+  </view>
+
+  <!-- 热门搜索 -->
+  <view class="hot-row" wx:if="{{hotKeywords.length}}">
+    <view class="hot-chip" wx:for="{{hotKeywords}}" wx:key="*this" bindtap="goHotSearch" data-word="{{item}}">{{item}}</view>
+  </view>
+
+  <!-- 快捷入口 -->
+  <view class="quick-row">
+    <view
+      class="quick-item"
+      wx:for="{{quickActions}}"
+      wx:key="id"
+      bindtap="onQuickTap"
+      data-item="{{item}}"
+      hover-class="quick-hover"
+    >
+      <view class="quick-icon" style="background: {{item.bg}}">{{item.icon}}</view>
+      <text class="quick-label">{{item.name}}</text>
+    </view>
+  </view>
+
+  <!-- 数据概览 -->
+  <view class="stats-wrap" wx:if="{{stats}}">
+    <view class="stats-card">
+      <view class="stat-item">
+        <view class="stat-num">{{stats.partsCount}}</view>
+        <view class="stat-label">零部件</view>
+      </view>
+      <view class="stat-line"></view>
+      <view class="stat-item">
+        <view class="stat-num accent-red">{{stats.faultsCount}}</view>
+        <view class="stat-label">故障案例</view>
+      </view>
+      <view class="stat-line"></view>
+      <view class="stat-item">
+        <view class="stat-num accent-blue">{{stats.categoryCount}}</view>
+        <view class="stat-label">系统分类</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="stats-skeleton" wx:elif="{{loading}}">
+    <view class="skeleton-bar"></view>
+  </view>
+
+  <!-- 今日推荐 -->
+  <view wx:if="{{recommendations}}" class="rec-section">
+    <view class="section-head">
+      <text class="section-title">今日推荐</text>
+    </view>
+    <scroll-view class="rec-scroll" scroll-x enhanced show-scrollbar="{{false}}">
+      <view class="rec-part" wx:for="{{recommendations.parts}}" wx:key="id" bindtap="goPartDetail" data-id="{{item.id}}">
+        <image class="rec-img" src="{{item.imageUrlFull}}" mode="aspectFill" />
+        <view class="rec-name">{{item.name}}</view>
+      </view>
+      <view class="rec-fault" wx:for="{{recommendations.faults}}" wx:key="id" bindtap="goFaultDetail" data-id="{{item.id}}">
+        <view class="rec-fault-title">{{item.title}}</view>
+        <view class="rec-fault-meta">{{item.categoryName}}</view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 最近浏览 -->
+  <view wx:if="{{recentHistory.length}}" class="rec-section">
+    <view class="section-head">
+      <text class="section-title">最近浏览</text>
+      <text class="section-more" bindtap="goHistory">全部</text>
+    </view>
+    <scroll-view class="rec-scroll" scroll-x enhanced show-scrollbar="{{false}}">
+      <view class="hist-item" wx:for="{{recentHistory}}" wx:key="key" bindtap="goHistoryItem" data-item="{{item}}">
+        <image wx:if="{{item.imageUrlFull}}" class="hist-img" src="{{item.imageUrlFull}}" mode="aspectFill" />
+        <view class="hist-icon" wx:else>🔧</view>
+        <view class="hist-title">{{item.title}}</view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 核心功能 -->
+  <view class="section-head">
+    <text class="section-title">核心功能</text>
+  </view>
+
+  <view class="module-card parts" bindtap="goParts" hover-class="module-hover">
+    <view class="module-bg"></view>
+    <view class="module-body">
+      <view class="module-icon-wrap parts-icon">
+        <text class="module-icon">⚙</text>
+      </view>
+      <view class="module-info">
+        <view class="module-title">汽车零部件科普</view>
+        <view class="module-desc">11 大系统 · 高清图解 · 故障表现</view>
+      </view>
+      <view class="module-go"><text class="go-arrow">→</text></view>
+    </view>
+  </view>
+
+  <view class="module-card faults" bindtap="goFaults" hover-class="module-hover">
+    <view class="module-bg"></view>
+    <view class="module-body">
+      <view class="module-icon-wrap faults-icon">
+        <text class="module-icon">🔧</text>
+      </view>
+      <view class="module-info">
+        <view class="module-title">汽车故障分析</view>
+        <view class="module-desc">现象 · 原因 · 方案 · 危险等级</view>
+      </view>
+      <view class="module-go faults-go"><text class="go-arrow">→</text></view>
+    </view>
+  </view>
+
+  <!-- 常用工具 -->
+  <view class="section-head">
+    <text class="section-title">常用工具</text>
+    <text class="section-more" bindtap="onMoreTools">全部</text>
+  </view>
+
+  <view class="tool-grid">
+    <view
+      class="tool-item"
+      wx:for="{{tools}}"
+      wx:key="id"
+      bindtap="onToolTap"
+      data-item="{{item}}"
+      hover-class="tool-hover"
+    >
+      <view class="tool-icon-wrap" style="background: {{item.bg}}">
+        <text class="tool-icon">{{item.icon}}</text>
+        <view class="tool-badge" wx:if="{{item.badge}}">{{item.badge}}</view>
+      </view>
+      <text class="tool-name">{{item.name}}</text>
+      <text class="tool-desc">{{item.desc}}</text>
+    </view>
+  </view>
+
+  <!-- 推荐服务 -->
+  <view class="section-head">
+    <text class="section-title">推荐服务</text>
+  </view>
+
+  <scroll-view class="service-scroll" scroll-x enhanced show-scrollbar="{{false}}">
+    <view
+      class="service-card"
+      wx:for="{{services}}"
+      wx:key="id"
+      style="background: {{item.bg}}"
+      bindtap="onServiceTap"
+      data-item="{{item}}"
+      hover-class="service-hover"
+    >
+      <text class="service-icon">{{item.icon}}</text>
+      <view class="service-title">{{item.name}}</view>
+      <view class="service-desc">{{item.desc}}</view>
+      <view class="service-tag">{{item.tag}}</view>
+    </view>
+  </scroll-view>
+
+  <view class="about-footer" bindtap="goAbout">
+    <text>关于汽车百科 · 授权说明</text>
+  </view>
+</view>

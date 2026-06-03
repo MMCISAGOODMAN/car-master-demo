@@ -1,0 +1,6 @@
+@import '../tool.wxss';
+
+.rescue-card { text-align: center; }
+.rescue-name { font-size: 32rpx; font-weight: 700; color: #1a1a2e; }
+.rescue-desc { font-size: 24rpx; color: #888; margin: 8rpx 0 16rpx; }
+.rescue-phone { font-size: 48rpx; font-weight: 700; color: #e94560; margin-bottom: 20rpx; letter-spacing: 4rpx; }

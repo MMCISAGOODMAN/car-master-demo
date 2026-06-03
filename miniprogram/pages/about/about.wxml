@@ -1,0 +1,15 @@
+<view class="about-page">
+  <view class="hero">
+    <view class="logo">🚗</view>
+    <view class="title">汽车百科</view>
+    <view class="subtitle">Car Master · 演示版</view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">演示说明</view>
+    <view class="para">本仓库为公开演示版，含 10 个样本零件、6 个故障案例与 1 篇指南。</view>
+    <view class="para">完整数据与配图不在本仓库内，功能界面与完整版一致，供本地预览与技术参考。</view>
+  </view>
+
+  <view class="footer">内容仅供参考 · 行车安全请进厂检修</view>
+</view>

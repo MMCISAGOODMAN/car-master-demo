@@ -1,0 +1,50 @@
+<view class="container">
+  <view wx:if="{{loading}}" class="loading">加载中...</view>
+
+  <view wx:elif="{{!fault}}" class="empty-tip">故障不存在</view>
+
+  <view wx:else>
+    <view class="detail-header card">
+      <view class="header-row">
+        <view class="header-main">
+          <view class="fault-title">{{fault.title}}</view>
+          <view class="header-meta">
+            <view class="detail-category">{{fault.categoryName}}</view>
+            <view class="danger-badge {{fault.dangerClass}}">危险等级：{{fault.dangerLevel}}</view>
+          </view>
+        </view>
+        <view class="fav-btn {{isFavorite ? 'active' : ''}}" bindtap="toggleFavorite">
+          {{isFavorite ? '★ 已收藏' : '☆ 收藏'}}
+        </view>
+      </view>
+    </view>
+
+    <view class="card">
+      <view class="section-title">故障现象</view>
+      <view class="section-content">{{fault.symptoms}}</view>
+    </view>
+
+    <view class="card">
+      <view class="section-title">可能原因</view>
+      <view class="list-item" wx:for="{{fault.causes}}" wx:key="*this">
+        <text class="list-dot">•</text>
+        <text>{{item}}</text>
+      </view>
+    </view>
+
+    <view class="card">
+      <view class="section-title">涉及零件</view>
+      <view class="tag-list">
+        <view class="tag clickable" wx:for="{{fault.relatedParts}}" wx:key="*this" bindtap="searchPart" data-name="{{item}}">{{item}}</view>
+      </view>
+    </view>
+
+    <view class="card">
+      <view class="section-title">解决方法</view>
+      <view class="list-item" wx:for="{{fault.solutions}}" wx:key="*this">
+        <text class="list-num">{{index + 1}}.</text>
+        <text>{{item}}</text>
+      </view>
+    </view>
+  </view>
+</view>

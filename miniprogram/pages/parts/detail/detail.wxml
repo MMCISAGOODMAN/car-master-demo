@@ -1,0 +1,43 @@
+<view class="container">
+  <view wx:if="{{loading}}" class="loading">加载中...</view>
+
+  <view wx:elif="{{!part}}" class="empty-tip">零件不存在</view>
+
+  <view wx:else>
+    <image class="detail-image" src="{{part.imageUrlFull}}" mode="aspectFill" />
+    <view class="detail-header card">
+      <view class="header-row">
+        <view>
+          <view class="detail-name">{{part.name}}</view>
+          <view class="detail-category">{{part.categoryName}}</view>
+        </view>
+        <view class="fav-btn {{isFavorite ? 'active' : ''}}" bindtap="toggleFavorite">
+          {{isFavorite ? '★ 已收藏' : '☆ 收藏'}}
+        </view>
+      </view>
+    </view>
+
+    <view class="card">
+      <view class="section-title">作用</view>
+      <view class="section-content">{{part.description}}</view>
+    </view>
+
+    <view class="card">
+      <view class="section-title">安装位置</view>
+      <view class="section-content">{{part.location}}</view>
+    </view>
+
+    <view class="card">
+      <view class="section-title">故障表现</view>
+      <view class="section-content fault-text">{{part.faultSymptoms}}</view>
+    </view>
+
+    <view class="card" wx:if="{{relatedFaults.length}}">
+      <view class="section-title">相关故障</view>
+      <view class="related-item" wx:for="{{relatedFaults}}" wx:key="id" bindtap="goFault" data-id="{{item.id}}">
+        <view class="related-title">{{item.title}}</view>
+        <view class="related-meta">{{item.categoryName}} · {{item.dangerLevel}}</view>
+      </view>
+    </view>
+  </view>
+</view>

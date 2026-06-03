@@ -1,0 +1,10 @@
+@import '../guide.wxss';
+
+.check-item {
+  display: flex;
+  font-size: 26rpx;
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 10rpx;
+}
+.check-icon { margin-right: 12rpx; color: #0f3460; }

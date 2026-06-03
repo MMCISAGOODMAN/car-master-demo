@@ -1,0 +1,6 @@
+<view class="guide-page">
+  <view class="guide-card" wx:for="{{sections}}" wx:key="title">
+    <view class="guide-title">{{item.title}}</view>
+    <view class="guide-content">{{item.content}}</view>
+  </view>
+</view>

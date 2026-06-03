@@ -1,0 +1,104 @@
+<view class="ai-page">
+  <!-- 顶部卡片（同首页 module-card 风格） -->
+  <view class="ai-header">
+    <view class="header-card">
+      <view class="header-bg"></view>
+      <view class="header-inner">
+        <view class="mascot-wrap">
+          <image class="mascot-img" src="/assets/xiaoqi-avatar.png" mode="aspectFill" />
+        </view>
+        <view class="header-info">
+          <view class="header-name-row">
+            <text class="header-name">小汽</text>
+            <text class="header-badge">AI 助手</text>
+          </view>
+          <text class="header-desc">汽车百科 · 保养故障 · 随时问我</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 对话区 -->
+  <scroll-view class="chat-scroll" scroll-y scroll-into-view="{{scrollTo}}" scroll-with-animation enhanced show-scrollbar="{{false}}">
+    <view class="chat-list">
+      <view
+        class="msg-block {{item.role}}"
+        wx:for="{{messages}}"
+        wx:key="id"
+        id="msg-{{item.id}}"
+      >
+        <block wx:if="{{item.role === 'assistant'}}">
+          <view class="assistant-row">
+            <view class="bot-avatar">
+              <image class="bot-avatar-img" src="/assets/xiaoqi-avatar.png" mode="aspectFill" />
+            </view>
+            <view class="assistant-body">
+              <text class="sender-name">{{item.name || '小汽'}}</text>
+              <view class="bubble bot {{item.rejected ? 'rejected' : ''}}">
+                <text class="bubble-text">{{item.content}}</text>
+                <text class="stream-cursor" wx:if="{{item.streaming}}"></text>
+              </view>
+            </view>
+          </view>
+        </block>
+
+        <block wx:else>
+          <view class="user-row">
+            <view class="bubble user">
+              <text class="bubble-text">{{item.content}}</text>
+            </view>
+            <view class="user-avatar">我</view>
+          </view>
+        </block>
+      </view>
+
+      <view class="msg-block assistant" wx:if="{{thinking}}">
+        <view class="assistant-row">
+          <view class="bot-avatar">
+            <image class="bot-avatar-img" src="/assets/xiaoqi-avatar.png" mode="aspectFill" />
+          </view>
+          <view class="assistant-body">
+            <text class="sender-name">小汽</text>
+            <view class="bubble bot thinking-bubble">
+              <view class="typing-dots">
+                <view class="dot d1"></view>
+                <view class="dot d2"></view>
+                <view class="dot d3"></view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="scroll-anchor" id="scroll-bottom"></view>
+  </scroll-view>
+
+  <!-- 推荐问题 -->
+  <view class="suggest-panel" wx:if="{{suggestions.length && messages.length <= 1}}">
+    <view class="suggest-label">试试问小汽</view>
+    <scroll-view class="suggest-scroll" scroll-x enhanced show-scrollbar="{{false}}">
+      <view class="suggest-chip" wx:for="{{suggestions}}" wx:key="*this" bindtap="askSuggest" data-q="{{item}}">{{item}}</view>
+    </scroll-view>
+  </view>
+
+  <!-- 输入栏 -->
+  <view class="input-panel">
+    <view class="input-wrap">
+      <input
+        class="chat-input"
+        placeholder="问小汽一个汽车问题..."
+        placeholder-class="input-ph"
+        value="{{input}}"
+        bindinput="onInput"
+        confirm-type="send"
+        bindconfirm="send"
+        maxlength="500"
+        disabled="{{thinking}}"
+      />
+      <view class="send-fab {{canSend && !thinking ? 'active' : ''}}" bindtap="send">
+        <text class="send-icon">↑</text>
+      </view>
+    </view>
+    <text class="input-hint">仅限汽车相关 · 体验版模拟回答</text>
+  </view>
+</view>

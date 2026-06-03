@@ -1,0 +1,13 @@
+@import '../tool.wxss';
+
+.btn-row { display: flex; gap: 16rpx; margin-top: 8rpx; }
+.half { flex: 1; margin-bottom: 0 !important; }
+
+.shop-item {
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+.shop-item:last-child { border-bottom: none; }
+.shop-name { font-size: 28rpx; font-weight: 600; color: #1a1a2e; }
+.shop-desc { font-size: 24rpx; color: #888; margin: 8rpx 0 12rpx; line-height: 1.5; }
+.shop-actions { display: flex; gap: 16rpx; }

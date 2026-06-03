@@ -1,0 +1,9 @@
+<view class="guide-page">
+  <view class="light-card" wx:for="{{lights}}" wx:key="name">
+    <view class="light-header">
+      <view class="light-name">{{item.name}}</view>
+      <view class="light-badge {{item.color.indexOf('红') >= 0 && item.color.indexOf('黄') < 0 ? 'red' : 'yellow'}}">{{item.color}}色</view>
+    </view>
+    <view class="guide-content">{{item.meaning}}</view>
+  </view>
+</view>

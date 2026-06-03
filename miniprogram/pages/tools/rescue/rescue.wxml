@@ -1,0 +1,11 @@
+<view class="tool-page">
+  <view class="tool-card rescue-card" wx:for="{{hotlines}}" wx:key="name">
+    <view class="rescue-name">{{item.name}}</view>
+    <view class="rescue-desc">{{item.desc}}</view>
+    <view class="rescue-phone">{{item.phone}}</view>
+    <view class="tool-btn" bindtap="call" data-phone="{{item.phone}}">立即拨打</view>
+  </view>
+  <view class="tool-tip" style="text-align:center;padding:24rpx 0">
+    紧急情况请优先拨打 110 / 120 / 122
+  </view>
+</view>

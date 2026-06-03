@@ -1,0 +1,10 @@
+<view class="tool-page">
+  <view class="tool-card" wx:for="{{items}}" wx:key="name">
+    <view class="tool-card-title">{{item.name}}</view>
+    <view class="tool-row" wx:for="{{item.specs}}" wx:for-item="spec" wx:key="*this">
+      <text class="tool-label">{{spec.label}}</text>
+      <text class="tool-value">{{spec.value}}</text>
+    </view>
+    <view class="tool-tip" wx:if="{{item.tip}}">{{item.tip}}</view>
+  </view>
+</view>

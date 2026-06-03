@@ -1,0 +1,35 @@
+<view class="container">
+  <view class="search-input-wrap">
+    <input
+      class="search-input"
+      placeholder="输入零件名称搜索"
+      value="{{keyword}}"
+      bindinput="onInput"
+      bindconfirm="doSearch"
+      focus
+    />
+    <view class="search-btn" bindtap="doSearch">搜索</view>
+  </view>
+
+  <view wx:if="{{searched && loading}}" class="loading">搜索中...</view>
+
+  <view wx:elif="{{searched && results.length === 0}}" class="empty-tip">未找到相关零件</view>
+
+  <view wx:elif="{{results.length > 0}}">
+    <view class="result-count">找到 {{results.length}} 个结果</view>
+    <view
+      class="part-item card"
+      wx:for="{{results}}"
+      wx:key="id"
+      bindtap="goDetail"
+      data-id="{{item.id}}"
+    >
+      <image class="part-image" src="{{item.imageUrlFull}}" mode="aspectFill" lazy-load />
+      <view class="part-info">
+        <view class="part-name">{{item.name}}</view>
+        <view class="part-category">{{item.categoryName}}</view>
+        <view class="part-desc">{{item.description}}</view>
+      </view>
+    </view>
+  </view>
+</view>

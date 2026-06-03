@@ -1,0 +1,9 @@
+<view class="guide-page">
+  <view class="guide-card" wx:for="{{sections}}" wx:key="title">
+    <view class="guide-title">{{item.title}}</view>
+    <view class="check-item" wx:for="{{item.items}}" wx:for-item="line" wx:key="*this">
+      <text class="check-icon">☐</text>
+      <text>{{line}}</text>
+    </view>
+  </view>
+</view>

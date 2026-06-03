@@ -1,0 +1,26 @@
+@import '../tool.wxss';
+@import '../favorite/favorite.wxss';
+
+.tabs {
+  display: flex;
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 8rpx;
+  margin-bottom: 24rpx;
+  border: 1rpx solid #eef0f3;
+}
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 16rpx;
+  font-size: 28rpx;
+  color: #888;
+  border-radius: 12rpx;
+}
+.tab.active {
+  background: #e94560;
+  color: #fff;
+  font-weight: 600;
+}
+
+.fav-item { display: flex; align-items: center; }

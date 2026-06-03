@@ -1,0 +1,21 @@
+<view class="container">
+  <view wx:if="{{loading}}" class="loading">加载中...</view>
+
+  <view wx:elif="{{faults.length === 0}}" class="empty-tip">该分类下暂无故障案例</view>
+
+  <view wx:else>
+    <view
+      class="fault-item card"
+      wx:for="{{faults}}"
+      wx:key="id"
+      bindtap="goDetail"
+      data-id="{{item.id}}"
+    >
+      <view class="fault-header">
+        <view class="fault-title">{{item.title}}</view>
+        <view class="danger-badge {{item.dangerClass}}">{{item.dangerLevel}}</view>
+      </view>
+      <view class="fault-symptoms">{{item.symptoms}}</view>
+    </view>
+  </view>
+</view>

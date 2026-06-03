@@ -1,0 +1,29 @@
+<view class="tool-page">
+  <view class="tool-card">
+    <view class="tool-card-title">当前位置</view>
+    <view wx:if="{{loading}}" class="tool-tip">正在获取位置...</view>
+    <view wx:elif="{{location}}">
+      <view class="tool-row"><text class="tool-label">纬度</text><text class="tool-value">{{location.latitude}}</text></view>
+      <view class="tool-row"><text class="tool-label">经度</text><text class="tool-value">{{location.longitude}}</text></view>
+      <view class="tool-row" wx:if="{{location.address}}"><text class="tool-label">地址</text><text class="tool-value">{{location.address}}</text></view>
+    </view>
+    <view wx:else class="tool-tip">{{locError || '未获取到位置'}}</view>
+    <view class="btn-row">
+      <view class="tool-btn secondary half" bindtap="refreshLoc">重新定位</view>
+      <view class="tool-btn blue half" bindtap="chooseLoc">地图选点</view>
+    </view>
+  </view>
+
+  <view class="tool-card">
+    <view class="tool-card-title">附近维修参考</view>
+    <view class="tool-tip" style="margin-bottom:16rpx">以下为常见维修渠道，可电话或导航咨询</view>
+    <view class="shop-item" wx:for="{{shops}}" wx:key="name">
+      <view class="shop-name">{{item.name}}</view>
+      <view class="shop-desc">{{item.desc}}</view>
+      <view class="shop-actions">
+        <view class="action-btn" wx:if="{{item.phone}}" bindtap="call" data-phone="{{item.phone}}">拨打电话</view>
+        <view class="action-btn" bindtap="openMap" data-name="{{item.name}}">地图搜索</view>
+      </view>
+    </view>
+  </view>
+</view>

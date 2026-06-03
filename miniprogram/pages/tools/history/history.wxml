@@ -1,0 +1,20 @@
+<view class="tool-page">
+  <view class="tabs">
+    <view class="tab {{tab === 'all' ? 'active' : ''}}" bindtap="switchTab" data-tab="all">全部</view>
+    <view class="tab {{tab === 'part' ? 'active' : ''}}" bindtap="switchTab" data-tab="part">零件</view>
+    <view class="tab {{tab === 'fault' ? 'active' : ''}}" bindtap="switchTab" data-tab="fault">故障</view>
+  </view>
+
+  <view wx:if="{{filtered.length === 0}}" class="tool-empty">暂无浏览记录</view>
+
+  <view class="fav-item" wx:for="{{filtered}}" wx:key="key" bindtap="goItem" data-item="{{item}}">
+    <image wx:if="{{item.imageUrlFull}}" class="fav-img" src="{{item.imageUrlFull}}" mode="aspectFill" />
+    <view class="fav-info">
+      <view class="fav-title">{{item.title}}</view>
+      <view class="fav-meta">{{item.subtitle}} · {{item.timeStr}}</view>
+    </view>
+    <view class="action-btn danger" catchtap="remove" data-type="{{item.type}}" data-id="{{item.id}}">删除</view>
+  </view>
+
+  <view class="tool-btn secondary" wx:if="{{list.length}}" bindtap="clearAll" style="margin-top:24rpx">清空全部</view>
+</view>

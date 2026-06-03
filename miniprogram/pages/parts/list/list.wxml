@@ -1,0 +1,22 @@
+<view class="container">
+  <view wx:if="{{loading}}" class="loading">加载中...</view>
+
+  <view wx:elif="{{parts.length === 0}}" class="empty-tip">该分类下暂无零部件</view>
+
+  <view wx:else>
+    <view
+      class="part-item card"
+      wx:for="{{parts}}"
+      wx:key="id"
+      bindtap="goDetail"
+      data-id="{{item.id}}"
+    >
+      <image class="part-image" src="{{item.imageUrlFull}}" mode="aspectFill" lazy-load />
+      <view class="part-info">
+        <view class="part-name">{{item.name}}</view>
+        <view class="part-desc">{{item.description}}</view>
+        <view class="part-location">📍 {{item.location}}</view>
+      </view>
+    </view>
+  </view>
+</view>

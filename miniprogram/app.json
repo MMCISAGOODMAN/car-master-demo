@@ -1,0 +1,49 @@
+{
+  "pages": [
+    "pages/splash/splash",
+    "pages/index/index",
+    "pages/parts/categories/categories",
+    "pages/parts/list/list",
+    "pages/parts/detail/detail",
+    "pages/parts/search/search",
+    "pages/search/unified/unified",
+    "pages/faults/categories/categories",
+    "pages/faults/list/list",
+    "pages/faults/detail/detail",
+    "pages/faults/search/search",
+    "pages/tools/scan/scan",
+    "pages/tools/voice/voice",
+    "pages/tools/maintain/maintain",
+    "pages/tools/vin/vin",
+    "pages/tools/oil/oil",
+    "pages/tools/tire/tire",
+    "pages/tools/fuel/fuel",
+    "pages/tools/shop/shop",
+    "pages/tools/rescue/rescue",
+    "pages/tools/favorite/favorite",
+    "pages/tools/diagnose/diagnose",
+    "pages/tools/garage/garage",
+    "pages/tools/history/history",
+    "pages/tools/ai/ai",
+    "pages/guide/beginner/beginner",
+    "pages/guide/classroom/classroom",
+    "pages/guide/inspection/inspection",
+    "pages/guide/lights/lights",
+    "pages/about/about"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "首页",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f7f8fa",
+    "backgroundTextStyle": "dark"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "用于查找附近维修店"
+    }
+  },
+  "requiredPrivateInfos": ["getLocation", "chooseLocation"]
+}
